@@ -1,0 +1,15 @@
+<!-- TicketPlatform/Events/templates/Events/purchase_ticket.html -->
+{% extends "persons/base.html" %}
+
+
+{% block content %}
+  <h1>Purchase Ticket for {{ event.name }}</h1>
+  <p>Price: {{ event.price }}</p>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Purchase</button>
+  </form>
+  <a href="{% url 'top_up_wallet' %}">Top Up Wallet</a>
+{% endblock %}
+
