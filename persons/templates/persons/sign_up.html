@@ -1,0 +1,16 @@
+<!-- TicketPlatform/Persons/templates/Persons/sign_up.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign Up</button>
+    </form>
+    <a href="{% url 'log_in' %}">Already have an account? Log In</a>
+</body>
+</html>
