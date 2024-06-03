@@ -1,0 +1,14 @@
+<!-- TicketPlatform/Persons/templates/Persons/index.html -->
+{% extends "persons/base.html" %}
+
+{% block title %}Welcome to My Site{% endblock %}
+
+{% block content %}
+  <h1>Welcome to Tikiti</h1>
+  {% if user.is_authenticated %}
+      <p class="index-hello">Hello, <span class="index-username">{{ user.username }}</span>!</p>
+      <p><a class="index-events-btn" href="{% url 'event_list' %}">View Events</a></p>
+  {% else %}
+      <p>Please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'signup' %}">sign up</a> to view events.</p>
+  {% endif %}
+{% endblock %}
