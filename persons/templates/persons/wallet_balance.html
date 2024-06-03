@@ -1,0 +1,10 @@
+<!-- TicketPlatform/Persons/templates/Persons/wallet_balance.html -->
+{% extends "persons/base.html" %}
+
+
+{% block content %}
+  <h1>Wallet Balance</h1>
+  <p>Your current wallet balance is: {{ wallet_balance }}</p>
+  <a href="{% url 'top_up_wallet' %}">Top Up Wallet</a>
+  <a href="{% url 'event_list' %}">Back to Events</a>
+{% endblock %}
