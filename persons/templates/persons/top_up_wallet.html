@@ -1,0 +1,12 @@
+<!-- TicketPlatform/Persons/templates/Persons/top_up_wallet.html -->
+{% extends "persons/base.html" %}
+
+
+{% block content %}
+  <h1>Top Up Wallet</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Top Up</button>
+  </form>
+{% endblock %}
