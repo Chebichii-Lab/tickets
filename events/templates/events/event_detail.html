@@ -1,0 +1,44 @@
+{% extends 'persons/base.html' %}
+
+{% block title %}Event Details{% endblock %}
+
+{% block content %}
+<div class="event-detail-card">
+  <h1>{{ event.name }}</h1>
+  <img src="{{ event.image.url }}" alt="{{ event.name }}">
+  <p>{{ event.description }}</p>
+  <p>Date: {{ event.date }}</p>
+  <p>VIP Price: ${{ event.price_vip }}</p>
+  <p>VVIP Price: ${{ event.price_vvip }}</p>
+  <p>Group Price: ${{ event.price_group }}</p>
+
+  {% if sold_out_vip %}
+      <p>VIP Tickets: Sold Out</p>
+  {% else %}
+      <p>VIP Tickets: {{ event.tickets_vip }} left</p>
+      <a class="btn" href="{% url 'purchase_ticket' event.id 'vip' %}">Buy VIP Ticket</a>
+  {% endif %}
+
+  {% if sold_out_vvip %}
+      <p>VVIP Tickets: Sold Out</p>
+  {% else %}
+      <p>VVIP Tickets: {{ event.tickets_vvip }} left</p>
+      <a class="btn" href="{% url 'purchase_ticket' event.id 'vvip' %}">Buy VVIP Ticket</a>
+  {% endif %}
+
+  {% if sold_out_group %}
+      <p>Group Tickets: Sold Out</p>
+  {% else %}
+      <p>Group Tickets: {{ event.tickets_group }} left</p>
+      <a class="btn" href="{% url 'purchase_ticket' event.id 'group' %}">Buy Group Ticket</a>
+  {% endif %}
+
+  {% if success %}
+      <p>{{ success }}</p>
+  {% endif %}
+
+  {% if error %}
+      <p>{{ error }}</p>
+  {% endif %}
+</div>
+{% endblock %}
