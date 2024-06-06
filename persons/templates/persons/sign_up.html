@@ -1,16 +1,68 @@
-<!-- TicketPlatform/Persons/templates/Persons/sign_up.html -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>Sign Up</title>
+    <style>
+        body {
+            background: url('path_to_your_background_image') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            width: 300px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: white;
+        }
+        label, a {
+            display: block;
+            color: white;
+            margin: 10px 0 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        button, .button-link {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        button:hover, .button-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Sign Up</h1>
     <form method="post">
         {% csrf_token %}
+        <h1>Sign Up</h1>
         {{ form.as_p }}
         <button type="submit">Sign Up</button>
+        <a href="{% url 'log_in' %}" class="button-link">Already have an account? Log In</a>
     </form>
-    <a href="{% url 'log_in' %}">Already have an account? Log In</a>
 </body>
 </html>
