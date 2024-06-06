@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Gochi+Hand");
 
 /* General body styling */
-body{
+body.background{
     background: url('https://www.google.com/imgres?q=colourful%20feather%20whimsical%20image%20that%20looks%20like%20an%20explosion%20of%20colour&imgurl=https%3A%2F%2Fthumbs.dreamstime.com%2Fb%2Fcolor-explosion-pattern-psychedelic-colorful-paper-feathers-abstract-rainbow-background-generative-ai-277623842.jpg&imgrefurl=https%3A%2F%2Fwww.dreamstime.com%2Fillustration%2Ffeather-explosion.html&docid=bZq1Di6o-AMPPM&tbnid=gioUU2YmFs_nkM&vet=12ahUKEwikn7WCt8GGAxVpQvEDHds-M2IQM3oECGUQAA..i&w=800&h=457&hcb=2&ved=2ahUKEwikn7WCt8GGAxVpQvEDHds-M2IQM3oECGUQAA') no-repeat center center fixed;
     background-size: cover;
     font-family: "Gochi Hand", cursive;
