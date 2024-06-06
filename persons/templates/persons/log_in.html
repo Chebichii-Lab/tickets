@@ -1,26 +1,78 @@
-<!-- TicketPlatform/Persons/templates/Persons/log_in.html -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>Login</title>
+    <style>
+        body {
+            background: url('path_to_your_background_image') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            width: 300px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: white;
+        }
+        label, a {
+            display: block;
+            color: white;
+            margin: 10px 0 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        button, .button-link {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        button:hover, .button-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h2>Login</h2>
     <form method="post">
         {% csrf_token %}
+        <h2>Login</h2>
         <label for="email">Email:</label>
         <input type="email" name="email" required><br><br>
         <label for="password">Password:</label>
         <input type="password" name="password" required><br><br>
         <button type="submit">Login</button>
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <a href="{% url 'sign_up' %}" class="button-link">Don't have an account? Sign Up</a>
     </form>
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    <a href="{% url 'sign_up' %}">Don't have an account? Sign Up</a>
 </body>
 </html>
