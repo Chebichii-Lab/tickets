@@ -2,50 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Gochi+Hand");
 
 /* General body styling */
-body.background{
-    background: url('https://www.google.com/imgres?q=colourful%20feather%20whimsical%20image%20that%20looks%20like%20an%20explosion%20of%20colour&imgurl=https%3A%2F%2Fthumbs.dreamstime.com%2Fb%2Fcolor-explosion-pattern-psychedelic-colorful-paper-feathers-abstract-rainbow-background-generative-ai-277623842.jpg&imgrefurl=https%3A%2F%2Fwww.dreamstime.com%2Fillustration%2Ffeather-explosion.html&docid=bZq1Di6o-AMPPM&tbnid=gioUU2YmFs_nkM&vet=12ahUKEwikn7WCt8GGAxVpQvEDHds-M2IQM3oECGUQAA..i&w=800&h=457&hcb=2&ved=2ahUKEwikn7WCt8GGAxVpQvEDHds-M2IQM3oECGUQAA') no-repeat center center fixed;
-    background-size: cover;
-    font-family: "Gochi Hand", cursive;
-    color: #333;
-}
 
-/* Navbar styling */
-.navbar {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 10px;
-    text-align: center;
-}
-
-.navbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.navbar li {
-    display: inline;
-    margin: 0 15px;
-}
-
-.navbar a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1em;
-}
-
-.navbar a:hover {
-    color: #ddd;
-}
-
-/* Container styling */
-/* .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-} */
 
 /* Event list container */
 .event-list {
