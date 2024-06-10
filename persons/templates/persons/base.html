@@ -3,10 +3,49 @@
 <html>
 <head>
     <title>{% block title %}My Site{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-</head>
-<body class="background">
+    <style>
+        body.bg-image {
+            background: url('path_to_your_background_image') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
 
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: #ddd;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
     <nav class="navbar">
         <ul>
             <li><a href="{% url 'index' %}">Home</a></li>
@@ -28,7 +67,6 @@
             {% endfor %}
         </ul>
     {% endif %}
-
     {% block content %}
     {% endblock %}
 </body>
