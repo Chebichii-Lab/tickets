@@ -5,42 +5,6 @@
 
 
 /* Event list container */
-.event-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-/* Event card styles */
-.event-card {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    flex: 1 1 calc(33.333% - 20px); /* Three cards per row with gaps */
-    max-width: calc(33.333% - 20px); /* Ensure max width matches flex basis */
-}
-
-.event-card img {
-    width: 100%;
-    height: auto;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-.event-card .event-info {
-    padding: 20px;
-}
-
-.event-card h2 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.event-card p {
-    color: #666;
-}
 
 /* Event detail card styles */
 .event-detail-card {
