@@ -1,10 +1,62 @@
 <!-- TicketPlatform/Persons/templates/Persons/wallet_balance.html -->
 {% extends "persons/base.html" %}
 
+{% block head %}
+    
+{% endblock %}
 
 {% block content %}
-  <h1>Wallet Balance</h1>
-  <p>Your current wallet balance is: {{ wallet_balance }}</p>
-  <a href="{% url 'top_up_wallet' %}">Top Up Wallet</a>
-  <a href="{% url 'event_list' %}">Back to Events</a>
+<style>
+  body {
+      background: url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+      background-size: cover;
+  }
+  h1 {
+      font-size: 2.5em;
+      color: #333;
+      text-align: left;
+      margin-top: 20px;
+      margin-left: 20px;
+  }
+
+  .wallet-card {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 300px;
+      margin: 20px;
+      text-align: center;
+      float: right;
+      margin-right: 20px;
+  }
+
+  .wallet-balance {
+      font-size: 2em;
+      color: #007bff;
+      margin-bottom: 20px;
+  }
+
+  .wallet-card a {
+      display: block;
+      padding: 10px 20px;
+      margin: 10px 0;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+  }
+
+  .wallet-card a:hover {
+      background-color: #0056b3;
+  }
+</style>
+    <h1>Wallet Balance</h1>
+    <div class="wallet-card">
+        <p class="wallet-balance">Your wallet balance is: ${{ wallet_balance }}</p>
+        <a href="{% url 'top_up_wallet' %}">Top Up Wallet</a>
+        <a href="{% url 'event_list' %}">Back to Events</a>
+    </div>
 {% endblock %}
+
