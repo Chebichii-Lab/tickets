@@ -53,7 +53,12 @@ def top_up_wallet(request):
             user.wallet_balance += amount
             user.save()
             messages.success(request, f'Wallet topped up by {amount}.')
-            return redirect('event_list')  # Redirect to the event list after top up
+            # return redirect('event_list')  # Redirect to the event list after top up
+            
+            # Redirect back to the purchase ticket page if coming from there
+            next_url = request.GET.get('next', 'wallet_balance')
+            return redirect(next_url)
+
     else:
         form = TopUpForm()
 
