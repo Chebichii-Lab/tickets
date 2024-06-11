@@ -46,14 +46,18 @@ def purchase_ticket(request, event_id, ticket_type):
 
     if tickets_left <= 0:
         # Handle sold out
-        return render(request, 'events/event_detail.html', {'event': event, 'error': 'This ticket type is sold out.'})
+        messages.error(request, 'This ticket type is sold out.')
+        # return render(request, 'events/event_detail.html', {'event': event, 'error': 'This ticket type is sold out.'})
+        return redirect('event_detail', event_id=event_id)
     
     if request.method == 'POST':
         form = PurchaseTicketForm(request.POST)
         if form.is_valid():
             if person.wallet_balance < price:
                 # Handle insufficient funds
-                return render(request, 'persons/top_up_wallet.html', {'error': 'Insufficient funds. Please top up your wallet.'})
+                messages.error(request, 'Insufficient funds. Please top up your wallet.')
+                # return render(request, 'persons/top_up_wallet.html', {'error': 'Insufficient funds. Please top up your wallet.'})
+                return redirect('top_up_wallet') # Redirect to top-up page
             
             # Deduct price from wallet and create a ticket
             person.wallet_balance -= price
@@ -68,8 +72,10 @@ def purchase_ticket(request, event_id, ticket_type):
             elif ticket_type == 'group':
                 event.tickets_group -= 1
             event.save()
+            messages.success(request, 'Ticket purchased successfully.')
             
-            return render(request, 'events/event_detail.html', {'event': event, 'success': 'Ticket purchased successfully.'})
+            # return render(request, 'events/event_detail.html', {'event': event, 'success': 'Ticket purchased successfully.'})
+            return redirect('event_detail', event_id=event_id)
     else:
         form = PurchaseTicketForm(initial={'ticket_type': ticket_type})
     
