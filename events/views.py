@@ -48,25 +48,31 @@ def purchase_ticket(request, event_id, ticket_type):
         # Handle sold out
         return render(request, 'events/event_detail.html', {'event': event, 'error': 'This ticket type is sold out.'})
     
-    if person.wallet_balance < price:
-        # Handle insufficient funds
-        return render(request, 'persons/top_up_wallet.html', {'error': 'Insufficient funds. Please top up your wallet.'})
+    if request.method == 'POST':
+        form = PurchaseTicketForm(request.POST)
+        if form.is_valid():
+            if person.wallet_balance < price:
+                # Handle insufficient funds
+                return render(request, 'persons/top_up_wallet.html', {'error': 'Insufficient funds. Please top up your wallet.'})
+            
+            # Deduct price from wallet and create a ticket
+            person.wallet_balance -= price
+            person.save()
+            Ticket.objects.create(event=event, owner=person, ticket_type=ticket_type)
+            
+            # Reduce the number of available tickets
+            if ticket_type == 'vip':
+                event.tickets_vip -= 1
+            elif ticket_type == 'vvip':
+                event.tickets_vvip -= 1
+            elif ticket_type == 'group':
+                event.tickets_group -= 1
+            event.save()
+            
+            return render(request, 'events/event_detail.html', {'event': event, 'success': 'Ticket purchased successfully.'})
+    else:
+        form = PurchaseTicketForm(initial={'ticket_type': ticket_type})
     
-    # Deduct price from wallet and create a ticket
-    person.wallet_balance -= price
-    person.save()
-    Ticket.objects.create(event=event, owner=person)
-    
-    # Reduce the number of available tickets
-    if ticket_type == 'vip':
-        event.tickets_vip -= 1
-    elif ticket_type == 'vvip':
-        event.tickets_vvip -= 1
-    elif ticket_type == 'group':
-        event.tickets_group -= 1
-    event.save()
-
-    return render(request, 'events/event_detail.html', {'event': event, 'success': 'Ticket purchased successfully.'})
-
+    return render(request, 'events/purchase_ticket.html', {'form': form, 'event': event, 'ticket_type': ticket_type})
 
 
