@@ -1,15 +1,52 @@
 <!-- TicketPlatform/Events/templates/Events/purchase_ticket.html -->
 {% extends "persons/base.html" %}
 
+{% block head %}
 
-{% block content %}
-  <h1>Purchase Ticket for {{ event.name }}</h1>
-  <p>Price: {{ event.price }}</p>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Purchase</button>
-  </form>
-  <a href="{% url 'top_up_wallet' %}">Top Up Wallet</a>
 {% endblock %}
 
+{% block content %}
+<style>
+  body {
+      background: url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+      background-size: cover;
+  }
+  .purchase-ticket-card {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 300px;
+      margin: 20px auto;
+      text-align: center;
+  }
+
+  .purchase-ticket-card form {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .purchase-ticket-card button {
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+  }
+
+  .purchase-ticket-card button:hover {
+      background-color: #0056b3;
+  }
+</style>
+<div class="purchase-ticket-card">
+    <h1>Purchase Ticket</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Purchase</button>
+    </form>
+</div>
+{% endblock %}
