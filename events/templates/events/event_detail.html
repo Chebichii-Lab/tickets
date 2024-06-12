@@ -66,7 +66,11 @@
 </style>
 <div class="event-detail-card">
   <h1>{{ event.name }}</h1>
-  <img src="{{ event.image.url }}" alt="{{ event.name }}">
+  {% if event.image %}
+      <img src="{{ event.image.url }}" alt="{{ event.name }}">
+  {% else %}
+      <p>No image available for this event.</p>
+  {% endif %}
   <p>{{ event.description }}</p>
   <p>Date: {{ event.date }}</p>
   <p>VIP Price: ${{ event.price_vip }}</p>
