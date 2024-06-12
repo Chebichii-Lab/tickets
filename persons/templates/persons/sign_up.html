@@ -45,6 +45,9 @@
         .form-container button:hover {
             background-color: #0056b3;
         }
+        .login-prompt p {
+            margin-bottom: 10px;
+        }
     </style>
     <div class="form-container">
         <h1>Sign Up</h1>
@@ -53,6 +56,9 @@
             {{ form.as_p }}
             <button type="submit">Sign Up</button>
         </form>
-        <a href="{% url 'log_in' %}"><button>Already have an account? Log In</button></a>
+        <div class="login-prompt">
+            <p>Already have an account?</p>
+            <a href="{% url 'log_in' %}"><button>Log in</button></a>
+        </div>
     </div>
 {% endblock %}

@@ -45,6 +45,9 @@
         .form-container button:hover {
             background-color: #0056b3;
         }
+        .signup-prompt p {
+            margin-bottom: 10px;
+        }
     </style>
     <div class="form-container">
         <h2>Login</h2>
@@ -63,6 +66,9 @@
                 {% endfor %}
             </ul>
         {% endif %}
-        <a href="{% url 'sign_up' %}"><button>Don't have an account? Sign Up</button></a>
+        <div class="signup-prompt">
+            <p>Don't have an account?</p>
+            <a href="{% url 'sign_up' %}"><button>Sign Up</button></a>
+        </div>
     </div>
 {% endblock %}
