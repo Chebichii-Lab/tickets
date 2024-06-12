@@ -14,6 +14,7 @@ class Event(models.Model):
     tickets_group = models.PositiveIntegerField(default=0)
     image = models.ImageField(upload_to='event_images/', blank=True, null=True)
     organizer = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='organized_events', null=True, blank=True)
+    location = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return self.name
