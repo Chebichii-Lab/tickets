@@ -5,6 +5,7 @@
     <title>{% block title %}My Site{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         .navbar {
             background-color: rgba(0, 0, 0, 0.3);
@@ -20,18 +21,48 @@
         }
 
         .navbar li {
-            display: inline;
+            display: inline-block;
             margin: 0 10px;
+            position: relative;
         }
 
         .navbar a {
             color: #fff;
             text-decoration: none;
             font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .navbar a:hover {
             color: #ddd;
+        }
+
+        .navbar a .fa {
+            font-size: 20px;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            width: 120px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            top: 125%; /* Position the tooltip above the icon */
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .navbar li:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
         }
 
         .container {
@@ -44,15 +75,50 @@
 <body>
     <nav class="navbar">
         <ul>
-            <li><a href="{% url 'index' %}">Home</a></li>
-            <li><a href="{% url 'event_list' %}">Events</a></li>
+            <li>
+                <a href="{% url 'index' %}">
+                    <i class="fa fa-home"></i>
+                    <span class="tooltip">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'event_list' %}">
+                    <i class="fa fa-calendar-alt"></i>
+                    <span class="tooltip">Events</span>
+                </a>
+            </li>
             {% if user.is_authenticated %}
-                <li><a href="{% url 'wallet_balance' %}">Wallet Balance</a></li>
-                <li><a href="{% url 'top_up_wallet' %}">Top Up Wallet</a></li>
-                <li><a href="{% url 'logout' %}">Log Out</a></li>
+                <li>
+                    <a href="{% url 'wallet_balance' %}">
+                        <i class="fa fa-wallet"></i>
+                        <span class="tooltip">Wallet Balance</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'top_up_wallet' %}">
+                        <i class="fa fa-credit-card"></i>
+                        <span class="tooltip">Top Up Wallet</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}">
+                        <i class="fa fa-sign-out-alt"></i>
+                        <span class="tooltip">Log Out</span>
+                    </a>
+                </li>
             {% else %}
-                <li><a href="{% url 'login' %}">Log In</a></li>
-                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                <li>
+                    <a href="{% url 'log_in' %}">
+                        <i class="fa fa-sign-in-alt"></i>
+                        <span class="tooltip">Log In</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'sign_up' %}">
+                        <i class="fa fa-user-plus"></i>
+                        <span class="tooltip">Sign Up</span>
+                    </a>
+                </li>
             {% endif %}
         </ul>
     </nav>

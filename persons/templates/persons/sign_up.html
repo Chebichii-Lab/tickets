@@ -1,70 +1,58 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Sign Up</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+{% extends "persons/base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
         body {
             background: url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
             background-size: cover;
             font-family: 'Roboto', Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
         }
-        form {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+
+        .form-container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            width: 300px;
-            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            margin-bottom: 20px;
-            color: white;
+        .form-container form {
+            display: flex;
+            flex-direction: column;
         }
-        label, a {
-            display: block;
-            color: white;
-            margin: 10px 0 5px;
+        .form-container label {
+            margin-bottom: 5px;
+            font-weight: bold;
         }
-        input {
-            width: 100%;
+        .form-container input {
+            margin-bottom: 15px;
             padding: 10px;
-            margin-bottom: 10px;
-            border: none;
             border-radius: 5px;
+            border: 1px solid #ccc;
         }
-        button, .button-link {
-            width: 100%;
+        .form-container button {
             padding: 10px;
             background-color: #007bff;
-            color: white;
+            color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 10px;
         }
-        button:hover, .button-link:hover {
+        .form-container button:hover {
             background-color: #0056b3;
         }
     </style>
-</head>
-<body>
-    <form method="post">
-        {% csrf_token %}
+    <div class="form-container">
         <h1>Sign Up</h1>
-        {{ form.as_p }}
-        <button type="submit">Sign Up</button>
-        <a href="{% url 'log_in' %}" class="button-link">Already have an account? Log In</a>
-    </form>
-</body>
-</html>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Sign Up</button>
+        </form>
+        <a href="{% url 'log_in' %}"><button>Already have an account? Log In</button></a>
+    </div>
+{% endblock %}
