@@ -7,6 +7,12 @@ class EventForm(forms.ModelForm):
         model = Event
         fields = ['name', 'description', 'date', 'price_vip', 'price_vvip', 'price_group', 'tickets_vip', 'tickets_vvip', 'tickets_group', 'image']
 
+     # Optionally add custom widget attributes
+    def __init__(self, *args, **kwargs):
+        super(EventForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({'class': 'form-control'})
+            
 class PurchaseTicketForm(forms.Form):
     TICKET_CHOICES = [
         ('vip', 'VIP'),
