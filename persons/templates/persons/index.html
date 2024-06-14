@@ -7,70 +7,106 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-  body {
-    background: url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Roboto', Arial, sans-serif;
-  }
-  h1 {
-    font-size: 2.5em;
-    color: #333;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.index-hello{
-    font-size: 1.5em;
-    color: #333;
-    text-align: center;
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    margin-left: 580px;
-    animation: fade-in 1s ease-in-out, move-forward 1.5s ease-in-out 1s forwards;
-}
-
-
-.index-events-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 20px auto; /* Center horizontally */
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    text-align: center;
-    font-size: 1.2em;
-}
-
-.index-events-btn:hover {
-    background-color: #0056b3;
-}
-
-@keyframes fade-in {
-    from {
-        opacity: 0;
+    body {
+        background: url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Roboto', Arial, sans-serif;
     }
-    to {
-        opacity: 1;
-    }
-}
 
-@keyframes move-forward {
-    from {
-        transform: translateX(-100%);
+    h1 {
+        font-size: 2.5em;
+        color: #333;
+        text-align: center;
+        margin-top: 20px;
+        animation: move-forward 1.5s ease-in-out 1s forwards;
     }
-    to {
-        transform: translateX(0);
+
+    .index-hello {
+        font-size: 2.5em;
+        color: #333;
+        text-align: center;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-left: 20px;
+        animation: move-forward 1.5s ease-in-out 1s forwards;
     }
-}
+
+    .index-events-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 20px auto; /* Center horizontally */
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        font-size: 1.2em;
+    }
+
+    .index-events-btn:hover {
+        background-color: #0056b3;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: calc(100vh - 150px); /* Adjust height to center the content properly */
+    }
+
+    .auth-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .auth-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        font-size: 1.2em;
+        margin: 5px;
+    }
+
+    .auth-btn:hover {
+        background-color: #0056b3;
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes move-forward {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
 </style>
-  <h1>Welcome to Tikiti</h1>
-  {% if user.is_authenticated %}
-      <p class="index-hello">Hello, {{ user.username }}</p>
-      <p><a class="index-events-btn" href="{% url 'event_list' %}">View Events</a></p>
-  {% else %}
-      <p>Please <a href="{% url 'log_in' %}">log in</a> or <a href="{% url 'sign_up' %}">sign up</a> to view events.</p>
-  {% endif %}
-{% endblock %}
 
+<h1>Welcome to Tikiti</h1>
+<div class="button-container">
+    {% if user.is_authenticated %}
+        <p class="index-hello">Hello, {{ user.username }}</p>
+        <p><a class="index-events-btn" href="{% url 'event_list' %}">View Events</a></p>
+    {% else %}
+        <div class="auth-buttons">
+            <a class="auth-btn" href="{% url 'log_in' %}">Log In</a>
+            <a class="auth-btn" href="{% url 'sign_up' %}">Sign Up</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
