@@ -33,12 +33,13 @@
             flex: 1 1 calc(33.333% - 20px);
             max-width: calc(33.333% - 20px);
             text-align: center;
+            transform: perspective(1000px) rotateY(0deg); /* Initial flat position */
             transition: transform 0.3s ease; /* Smooth transition for the transform effect */
-            transform: perspective(1000px) rotateY(10deg); /* Uniform 3D rotation */
+  
         }
 
         .event-card:hover {
-            transform: perspective(1000px) rotateY(0deg); /* Return to original position on hover */
+            transform: perspective(1000px) rotateY(10deg); /* Rotate on hover */
         }
 
         .event-card img {
