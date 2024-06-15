@@ -131,36 +131,36 @@
     <p>{{ event.description }}</p>
     <div class="event-details">
         <div class="details-left">
-            <p>Date: {{ event.date }}</p>
-            <p>Location: {{ event.location }}</p>
+            <p><strong>Date:</strong> {{ event.date }}</p>
+            <p><strong>Location:</strong> {{ event.location }}</p>
             <a class="btn" href="https://www.google.com/maps/search/?api=1&query={{ event.location }}">
                 <i class="fas fa-map-marker-alt"></i>
                 <span class="tooltip-text">VIEW LOCATION HERE</span>
             </a>
         </div>
         <div class="details-right">
-            <p>VIP Price: ${{ event.price_vip }}</p>
-            <p>VVIP Price: ${{ event.price_vvip }}</p>
-            <p>Group Price: ${{ event.price_group }}</p>
+            <p><strong>VIP Price:</strong> ${{ event.price_vip }}</p>
+            <p><strong>VVIP Price:</strong> ${{ event.price_vvip }}</p>
+            <p><strong>Group Price:</strong> ${{ event.price_group }}</p>
 
             {% if sold_out_vip %}
                 <p>VIP Tickets: Sold Out</p>
             {% else %}
-                <p>VIP Tickets: {{ event.tickets_vip }} left</p>
+                <p>VIP Tickets: <strong>{{ event.tickets_vip }}</strong> left</p>
                 <a class="btn" href="{% url 'purchase_ticket' event.id 'vip' %}">Buy VIP Ticket</a>
             {% endif %}
 
             {% if sold_out_vvip %}
                 <p>VVIP Tickets: Sold Out</p>
             {% else %}
-                <p>VVIP Tickets: {{ event.tickets_vvip }} left</p>
+                <p>VVIP Tickets: <strong>{{ event.tickets_vvip }}</strong> left</p>
                 <a class="btn" href="{% url 'purchase_ticket' event.id 'vvip' %}">Buy VVIP Ticket</a>
             {% endif %}
 
             {% if sold_out_group %}
                 <p>Group Tickets: Sold Out</p>
             {% else %}
-                <p>Group Tickets: {{ event.tickets_group }} left</p>
+                <p>Group Tickets: <strong>{{ event.tickets_group }}</strong> left</p>
                 <a class="btn" href="{% url 'purchase_ticket' event.id 'group' %}">Buy Group Ticket</a>
             {% endif %}
         </div>
