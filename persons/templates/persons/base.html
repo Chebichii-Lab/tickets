@@ -70,6 +70,38 @@
             margin: 0 auto;
             padding: 20px;
         }
+        footer {
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            text-align: left;
+            padding: 20px 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        footer .column {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        footer .column h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+            border-bottom: 1px solid #555;
+            padding-bottom: 5px;
+        }
+
+        footer .column p,
+        footer .column a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+
+        footer .column a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -131,5 +163,19 @@
     {% endif %}
     {% block content %}
     {% endblock %}
+    <footer>
+        <div class="column">
+            <h3>Contact Us</h3>
+            <p>Email: support@mysite.com</p>
+            <p>Phone: (123) 456-7890</p>
+            <p>Address: 1234 Main St, Anytown, USA</p>
+        </div>
+        <div class="column">
+            <h3>Navigation</h3>
+            <p><a href="{% url 'event_list' %}">Events</a></p>
+            <p><a href="{% url 'wallet_balance' %}">Wallet</a></p>
+            <p><a href="{% url 'top_up_wallet' %}">Top Up</a></p>
+        </div>
+    </footer>
 </body>
 </html>
