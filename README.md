@@ -7,8 +7,8 @@ Natasha Serem
 An event platform where organizers can effortlessly manage their events and attendees can smoothly browse, purchase and keep track of tickets. 
 
 ### Set up and Installations
-To get the code, clone the repository:  and run the following commands;
-    $ cd Awwards-Show
+To get the code, clone the repository: https://github.com/Chebichii-Lab/tickets.git  and run the following commands;
+    $ cd tickets
     $ pip install -r requirements.txt
 
 ### Install and actiavte the virtual environment
